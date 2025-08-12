@@ -1,0 +1,32 @@
+{
+  "id": "py-01-variables",
+  "title": "Variables & Data Types",
+  "xp": 51,
+  "level": 1,
+  "exercises": [
+    {
+      "type": "mcq",
+      "prompt": "What is the type of `3.14` in Python?",
+      "choices": ["int", "float", "str", "bool"],
+      "answer": "float",
+      "hints": ["Think about decimals."],
+      "explanation": "3.14 is a floating-point number (float)."
+    },
+    {
+      "type": "fill",
+      "prompt": "Fill the blank to assign the value 10 to variable `x`.",
+      "starterCode": "x = ___",
+      "answer": "10",
+      "hints": ["No quotes needed for numbers."],
+      "explanation": "Numbers are assigned directly: x = 10"
+    },
+    {
+      "type": "output-prediction",
+      "prompt": "What does this print?",
+      "starterCode": "a = 2\nb = '3'\nprint(a + int(b))",
+      "answer": "5",
+      "hints": ["`int()` converts string to integer."],
+      "explanation": "int('3') is 3. 2 + 3 = 5."
+    }
+  ]
+}
