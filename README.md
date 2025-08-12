@@ -1,17 +1,39 @@
-## Duolingo Dev — Curso de Python
+# Duolingo Dev
 
-Aplicativo React Native (Expo) inspirado no Duolingo para aprender Python com lições, perguntas de múltipla escolha, preenchimento de lacunas e predição de saída. Inclui dicas, realce de código, feedback com cores e sistema de XP.
+<p align="center">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="30" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" height="30" alt="React Native"/>
+  <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" height="30" alt="Expo"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" height="30" alt="Node.js"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" height="30" alt="Python Learning"/>
+</p>
 
-### Principais recursos
+<p align="center">
+  <strong>Um aplicativo mobile inspirado no Duolingo para aprender Python de forma interativa!</strong>
+</p>
+
+> Aplicativo React Native (Expo) com lições, perguntas de múltipla escolha, preenchimento de lacunas e predição de saída. Inclui dicas, realce de código, feedback com cores e sistema de XP.
+
+## Índice
+
+- [Principais Recursos](#-principais-recursos)
+- [Requisitos](#-requisitos)
+- [Instalação](#-instalação)
+- [Executando](#-executando)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Modelo de Dados](#-modelo-de-dados)
+- [Solução de Problemas](#-solução-de-problemas)
+- [Scripts Disponíveis](#-scripts-disponíveis)
+- [Licença](#-licença)
+
+## Principais Recursos
 
 - **Tipos de exercícios**: `mcq` (múltipla escolha), `fill` (preencher lacuna) e `output-prediction` (prever saída).
-- **Dicas**: botão “Hint” no rodapé abre um modal com dicas; se houver várias, é possível navegar com “Next”.
-- **Starter code sempre visível**: realce de sintaxe com `@wooorm/starry-night` e fallback em texto monoespaçado.
-- **Feedback imediato**:
-  - **MCQ**: resposta correta em verde, alternativa selecionada errada em vermelho + explicação.
-  - **Fill/Output**: ao errar, input em estado de erro + bloco mostrando sua resposta (vermelho), a correta (verde) e a explicação.
-- **Botão Next ao errar**: permite avançar para a próxima questão mesmo após erro.
-- **XP por questão**: o XP da lição é dividido igualmente entre as questões (arredondado). Ao acertar, aparece um pop-up com `+XP` e a lição avança; ao final, volta para a lista de lições.
+- **Dicas**: Botão “Hint” no rodapé abre um modal com dicas; se houver várias, é possível navegar com “Next”.
+- **Starter code sempre visível**: Realce de sintaxe com `@wooorm/starry-night` e fallback em texto monoespaçado.
+- **Feedback imediato**: Cores e explicações para acertos e erros.
+- **Botão Next ao errar**: Permite avançar para a próxima questão mesmo após erro.
+- **XP por questão**: Ganhe XP ao acertar e avance de nível!
 
 ## Requisitos
 
@@ -20,88 +42,47 @@ Aplicativo React Native (Expo) inspirado no Duolingo para aprender Python com li
 
 ## Instalação
 
-- **Instalar dependências:**
-  ```bash
-  npm install
-  ```
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/seu-usuario/seu-repositorio.git
+    cd seu-repositorio
+    ```
 
-Se aparecer conflito de dependências (ERESOLVE), rode:
-
-```bash
-npm install --legacy-peer-deps
-```
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+    > Se encontrar conflitos (`ERESOLVE`), rode: `npm install --legacy-peer-deps`
 
 ## Executando
 
-- **Iniciar o servidor de desenvolvimento:**
-  ```bash
-  npm start
-  ```
-- Abra o app Expo Go no celular e escaneie o QR Code.
-- Comandos úteis:
-  - `npm run android`: abre em emulador/dispositivo Android
-  - `npm run ios`: abre no simulador iOS (macOS)
-  - `npm run web`: abre no navegador
+1.  **Inicie o servidor de desenvolvimento:**
+    ```bash
+    npm start
+    ```
+2.  Abra o app **Expo Go** no seu celular e escaneie o QR Code.
 
-## Estrutura do projeto
+## Estrutura do Projeto
 
 ```
 src/
-  components/
-    exercises/
-      MCQExercise.tsx
-      FillInTheBlankExercise.tsx
-      OutputPredictionExercise.tsx
-  data/
-    lessons/
-      sample-lesson-01.json
-  screens/
-    LessonListScreen.tsx
-    LessonDetailScreen.tsx
-    ExerciseScreen.tsx
-  services/
-    lessonService.ts
-  theme/
-    theme.ts
-  types/
-    index.ts
+  components/     # Componentes reutilizáveis (exercícios, etc)
+  data/           # Dados estáticos (lições em JSON)
+  screens/        # Telas principais do app
+  services/       # Lógica de busca de dados
+  theme/          # Configurações de tema (cores, fontes)
+  types/          # Definições de tipos TypeScript
 ```
 
-### Arquitetura e fluxo
+## Modelo de Dados
 
-- **`LessonListScreen`**: lista as lições disponíveis (`getLessons`).
-- **`LessonDetailScreen`**: detalhes e botão para iniciar a lição.
-- **`ExerciseScreen`**:
-  - Controla o índice atual da questão e o progresso.
-  - Exibe o botão **Hint** (modal com dicas e navegação entre elas).
-  - Em caso de erro, exibe o botão **Next** para seguir.
-  - Ao acertar: exibe `+XP` por questão e avança automaticamente; ao terminar, retorna à lista.
+As lições e exercícios seguem uma estrutura JSON para facilitar a criação de conteúdo.
 
-## Modelo de dados
+- **Tipos Principais**: `Lesson` e `Exercise` em `src/types/index.ts`.
+- **Exemplo de Lição**: `src/data/lessons/sample-lesson-01.json`.
 
-### Tipos (`src/types/index.ts`)
-
-```ts
-export interface Exercise {
-  type: "mcq" | "fill" | "output-prediction";
-  prompt: string;
-  choices?: string[]; // somente para mcq
-  starterCode?: string; // opcional (fill / output-prediction)
-  answer: string;
-  hints?: string[];
-  explanation?: string;
-}
-
-export interface Lesson {
-  id: string;
-  title: string;
-  xp: number; // XP total da lição
-  level: number;
-  exercises: Exercise[];
-}
-```
-
-### Exemplo de lição (`src/data/lessons/sample-lesson-01.json`)
+<details>
+  <summary>Clique para ver um exemplo de lição em JSON</summary>
 
 ```json
 {
@@ -117,71 +98,22 @@ export interface Lesson {
       "answer": "float",
       "hints": ["Think about decimals."],
       "explanation": "3.14 is a floating-point number (float)."
-    },
-    {
-      "type": "fill",
-      "prompt": "Fill the blank to assign the value 10 to variable `x`.",
-      "starterCode": "x = ___",
-      "answer": "10",
-      "hints": ["No quotes needed for numbers."],
-      "explanation": "Numbers are assigned directly: x = 10"
-    },
-    {
-      "type": "output-prediction",
-      "prompt": "What does this print?",
-      "starterCode": "a = 2\nb = '3'\nprint(a + int(b))",
-      "answer": "5",
-      "hints": ["`int()` converts string to integer."],
-      "explanation": "int('3') is 3. 2 + 3 = 5."
     }
   ]
 }
 ```
 
-## Regras de XP
+</details>
 
-- **Cálculo**: `XP por questão = round(lesson.xp / número_de_questões)`.
-- **Quando é atribuído**: ao responder corretamente uma questão.
-- **UX**: aparece um pop-up `+XP` e a tela avança; ao final da última questão, retorna à lista de lições.
+## Solução de Problemas
 
-## Dicas (Hint)
+- **Conflito de dependências (ERESOLVE)**: Rode `npm install --legacy-peer-deps`.
+- **Expo não recarrega**: Pare o servidor e rode `expo start -c` para limpar o cache.
+- **Sem highlight no código**: O app mostra fallback monoespaçado automaticamente; verifique se `starterCode` existe na questão.
 
-- O botão **Hint** fica no centro inferior da `ExerciseScreen`.
-- Ao tocar, abre um modal (`Dialog`).
-- Se houver várias dicas, use **Next** para avançar. O índice atual é exibido (ex.: `1/2`).
-- Se a questão não tiver dicas, o modal informa que não há dicas disponíveis.
+## Scripts Disponíveis
 
-## Feedback de respostas
-
-- **MCQ**: após tocar em uma alternativa, se correta fica verde; se errada, a alternativa escolhida fica vermelha, a correta verde e é mostrada a explicação. Em caso de erro, surge o botão **Next** para prosseguir.
-- **Fill / OutputPrediction**: se errar, o input fica em estado de erro e aparece um bloco com sua resposta (vermelho), a correta (verde) e a explicação. O botão **Next** aparece para avançar.
-
-## Tema
-
-- Arquivo: `src/theme/theme.ts`.
-- Cores extras suportadas pelos componentes: `codeBackground` e `codeText` (usadas nos blocos de código). Se ausentes, há fallback para `background` e `#d4d4d4`.
-
-## Dicas para criar novas lições
-
-- Use os mesmos campos do exemplo acima.
-- **mcq** requer `choices` + `answer`.
-- **fill** e **output-prediction** podem ter `starterCode` para exibir o bloco de código.
-- Adicione `hints` (array de strings) e uma `explanation` breve.
-
-## Solução de problemas
-
-- **Conflito de dependências (ERESOLVE)**: rode `npm install --legacy-peer-deps`.
-- **Expo não recarrega**: pare o servidor e rode `expo start -c` para limpar o cache.
-- **Sem highlight no código**: o app mostra fallback monoespaçado automaticamente; verifique se `starterCode` existe na questão.
-
-## Scripts disponíveis
-
-- `npm start` — inicia o Metro/Expo.
-- `npm run android` — abre no Android.
-- `npm run ios` — abre no iOS (macOS necessário).
-- `npm run web` — abre no navegador.
-
-## Licença
-
-Uso educacional. Ajuste conforme a necessidade do seu projeto.
-"# Duolingo-Dev" 
+- `npm start` — Inicia o Metro/Expo.
+- `npm run android` — Abre no Android.
+- `npm run ios` — Abre no iOS (macOS necessário).
+- `npm run web` — Abre no navegador.
