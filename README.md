@@ -54,7 +54,7 @@
     ```
     > Se encontrar conflitos (`ERESOLVE`), rode: `npm install --legacy-peer-deps`
 
-## Executando
+## Executando o App
 
 1.  **Inicie o servidor de desenvolvimento:**
     ```bash
